@@ -1,16 +1,22 @@
 package com.spring.boot.controlefinanceiro.model;
 
-import com.spring.boot.controlefinanceiro.enums.CategoriaEnum;
-import com.spring.boot.controlefinanceiro.enums.TipoLancamentoEnum;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
+
+import com.spring.boot.controlefinanceiro.enums.CategoriaEnum;
+import com.spring.boot.controlefinanceiro.enums.TipoLancamentoEnum;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "SENAI_LANCAMENTO")
@@ -33,9 +39,13 @@ public class Lancamento {
     @JoinColumn(name = "grupo_id")
     private Grupo grupo;
 
+    @Transient // Esse campo não será persistido
+    private Long grupoId;
+
     public Lancamento(){}
 
-    public Lancamento(Long id, String nome, String descricao, BigDecimal valor, LocalDate data, TipoLancamentoEnum tipo, CategoriaEnum categoria, Grupo grupo) {
+    // Construtor com todos os campos
+    public Lancamento(Long id, String nome, String descricao, BigDecimal valor, LocalDate data, TipoLancamentoEnum tipo, CategoriaEnum categoria, Grupo grupo, Long grupoId) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -44,7 +54,19 @@ public class Lancamento {
         this.tipo = tipo;
         this.categoria = categoria;
         this.grupo = grupo;
+        this.grupoId = grupoId;
     }
+
+    // Getters e Setters
+    // Campo grupoId para desserializar o JSON
+    public Long getGrupoId() {
+        return grupoId;
+    }
+
+    public void setGrupoId(Long grupoId) {
+        this.grupoId = grupoId;
+    }
+
 
     public Long getId() {
         return id;
