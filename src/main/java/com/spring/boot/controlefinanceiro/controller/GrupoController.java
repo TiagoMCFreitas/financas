@@ -30,8 +30,7 @@ public class GrupoController {
 
     @PostMapping
     public Grupo save(@RequestBody CadastroGrupoComPessoaPorId grupo) {
-        System.out.println(grupo.getPessoaId());
-        return this.service.save(grupo);
+        return this.service.savePessoaId(grupo);
     }
 
     @PutMapping

@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @OpenAPIDefinition(info = @io.swagger.v3.oas.annotations.info.Info(title = "${info.build.name}", version = "${info.build.version}", description = "${info.app.description}",
-        contact = @io.swagger.v3.oas.annotations.info.Contact(name = "Time Arquitetura e APIs", email = "jonatas.edo@gmail.com")))
+        contact = @io.swagger.v3.oas.annotations.info.Contact(name = "Time Controle de Finanças", email = "tiagofreitas85862@gmail.com")))
 @SpringBootApplication
 public class ControleFinanceiroApplication  implements WebMvcConfigurer {
 
