@@ -15,4 +15,6 @@ import java.util.List;
 public interface LancamentoRepository extends JpaRepository<Lancamento, Long> {
       //  List<Lancamento> findByNomeContainingOrTipoOrDataOrCategoria(String nome, TipoLancamentoEnum tipo, LocalDate data, CategoriaEnum categoria);
         List<Lancamento> findLancamentosByDataBetweenAndGrupoOrderByTipo(LocalDate startDate, LocalDate endDate, Grupo grupo);
+        List<Lancamento> findAllByGrupoOrderByTipo(Grupo grupo);
+        List<Lancamento> findAllByCategoriaAndGrupoOrderByTipo(CategoriaEnum categoria, Grupo grupo);
 }

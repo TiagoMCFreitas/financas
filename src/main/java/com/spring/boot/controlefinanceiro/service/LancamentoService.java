@@ -6,6 +6,7 @@ import java.util.List;
 import java.time.YearMonth;
 import java.util.Optional;
 
+import com.spring.boot.controlefinanceiro.enums.CategoriaEnum;
 import com.spring.boot.controlefinanceiro.enums.TipoLancamentoEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -87,5 +88,13 @@ public class LancamentoService {
         Optional<Grupo> grupo = this.grupoRepository.findById(id);
         return this.lancamentoRepository.findLancamentosByDataBetweenAndGrupoOrderByTipo(primeiroDia,ultimoDia, grupo.orElse(null));
 
+    }
+    public List<Lancamento> relatorioGrupo(Long id){
+        Optional<Grupo> grupo = this.grupoRepository.findById(id);
+        return this.lancamentoRepository.findAllByGrupoOrderByTipo(grupo.orElse(null));
+    }
+    public List<Lancamento> relatorioCategoria(Long id, String categoria){
+        Optional<Grupo> grupo = this.grupoRepository.findById(id);
+        return this.lancamentoRepository.findAllByCategoriaAndGrupoOrderByTipo(CategoriaEnum.valueOf(categoria),grupo.orElse(null));
     }
 }

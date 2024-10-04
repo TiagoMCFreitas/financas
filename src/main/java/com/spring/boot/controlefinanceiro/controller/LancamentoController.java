@@ -56,4 +56,13 @@ public class LancamentoController {
         return this.lancamentoService.relatorioMensal(data, grupo);
     }
 
+    @GetMapping("/relatorio/grupo")
+    public List<Lancamento> relatorioMensal(@RequestParam Long grupo) {
+        return this.lancamentoService.relatorioGrupo(grupo);
+    }
+    @GetMapping("/relatorio/categoria")
+    public List<Lancamento> relatorioCategoria(@RequestParam Long grupo, String categoria) {
+        return this.lancamentoService.relatorioCategoria(grupo, categoria);
+    }
+
 }
