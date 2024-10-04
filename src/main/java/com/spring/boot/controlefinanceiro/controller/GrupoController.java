@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/grupo")
-@RequiredArgsConstructor
 @CrossOrigin("*")
 public class GrupoController {
 

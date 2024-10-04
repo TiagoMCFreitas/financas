@@ -11,11 +11,9 @@ import com.spring.boot.controlefinanceiro.dto.LancamentoFilterDTO;
 import com.spring.boot.controlefinanceiro.model.Lancamento;
 import com.spring.boot.controlefinanceiro.service.LancamentoService;
 
-import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("api/lancamento")
-@RequiredArgsConstructor
 @CrossOrigin("*")
 public class LancamentoController {
 

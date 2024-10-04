@@ -3,16 +3,15 @@ package com.spring.boot.controlefinanceiro.service;
 import com.spring.boot.controlefinanceiro.exception.custom.NotFoundException;
 import com.spring.boot.controlefinanceiro.model.Pessoa;
 import com.spring.boot.controlefinanceiro.repository.PessoaRepository;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class PessoaService {
-
-    private final PessoaRepository repository;
+    @Autowired
+    private PessoaRepository repository;
 
     public Pessoa findById(Long id) {
         return this.repository.findById(id).orElseThrow(() -> new NotFoundException("Pessoa não encontrada"));
